@@ -1,0 +1,45 @@
+{
+  "name": "@corets/accessor",
+  "description": "Statically typed object accessor",
+  "version": "0.0.0",
+  "author": "Maxim Kott",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/types/index.d.ts",
+  "keywords": [
+    "corets"
+  ],
+  "files": [
+    "/dist"
+  ],
+  "repository": "github:corets/accessor",
+  "homepage": "https://corets.github.io/accessor",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "scripts": {
+    "test": "jest",
+    "coverage": "jest --coverage && echo '\nOpen \"coverage/lcov-report/index.html\" in your browser\n'",
+    "lint": "tsc --noEmit",
+    "format": "prettier --write .",
+    "build": "rm -rf dist && microbundle --entry src/index.ts --target web --format cjs,es",
+    "prodrelease": "np --no-release-draft --tag next",
+    "devrelease": "np prerelease --no-release-draft --tag dev"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.1.4",
+    "@types/lodash-es": "^4.17.4",
+    "jest": "^25.1.0",
+    "lodash": "^4.17.21",
+    "microbundle": "^0.13.0",
+    "np": "^7.2.0",
+    "prettier": "2.2.1",
+    "ts-jest": "^25.2.1",
+    "typescript": "^3.8.3"
+  }
+}
