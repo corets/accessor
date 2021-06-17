@@ -1,13 +1,13 @@
 import { CreateAccessor, CreateNestedAccessor } from "./types"
 import { get, has } from "lodash-es"
 
-export const createAccessor: CreateAccessor = (source, reader) =>
-  createNestedAccessor(source, undefined, reader)
+export const createAccessor: CreateAccessor = (source, handler) =>
+  createNestedAccessor(source, undefined, handler)
 
 const createNestedAccessor: CreateNestedAccessor = (
   source,
   nestedKey,
-  reader
+  handler
 ) => {
   return new Proxy(source as any, {
     get(_, key) {
@@ -20,13 +20,13 @@ const createNestedAccessor: CreateNestedAccessor = (
 
       if (key === "keyAt") {
         return (key) =>
-          createNestedAccessor(source, createAbsoluteKey(key), reader).key()
+          createNestedAccessor(source, createAbsoluteKey(key), handler).key()
       }
 
       if (key === "get") {
         return (...args) => {
-          if (reader) {
-            return reader(source, nestedKey, ...(args as any))
+          if (handler) {
+            return handler(source, nestedKey, ...(args as any))
           }
 
           return nestedKey === undefined ? source : get(source, nestedKey)
@@ -35,7 +35,7 @@ const createNestedAccessor: CreateNestedAccessor = (
 
       if (key === "getAt") {
         return (key, ...args) =>
-          createNestedAccessor(source, createAbsoluteKey(key), reader).get(
+          createNestedAccessor(source, createAbsoluteKey(key), handler).get(
             ...(args as any)
           )
       }
@@ -46,10 +46,10 @@ const createNestedAccessor: CreateNestedAccessor = (
 
       if (key === "hasAt") {
         return (key) =>
-          createNestedAccessor(source, createAbsoluteKey(key), reader).has()
+          createNestedAccessor(source, createAbsoluteKey(key), handler).has()
       }
 
-      return createNestedAccessor(source, createAbsoluteKey(key), reader)
+      return createNestedAccessor(source, createAbsoluteKey(key), handler)
     },
   })
 }

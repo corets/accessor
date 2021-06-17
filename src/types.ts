@@ -32,7 +32,7 @@ export type CreateAccessor = <
   TAccessHandlerArgs extends any[] = never
 >(
   source: TSource,
-  reader?: ObjectAccessHandler<
+  handler?: ObjectAccessHandler<
     TSource,
     TAccessHandlerResult,
     TAccessHandlerArgs
@@ -46,7 +46,7 @@ export type CreateNestedAccessor = <
 >(
   source: TSource,
   nestedKey: string | number | symbol | undefined,
-  reader?: ObjectAccessHandler<
+  handler?: ObjectAccessHandler<
     TSource,
     TAccessHandlerResult,
     TAccessHandlerArgs
