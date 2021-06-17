@@ -1,7 +1,7 @@
 {
   "name": "@corets/accessor",
   "description": "Statically typed object accessor",
-  "version": "0.0.1-1",
+  "version": "0.0.1-2",
   "author": "Maxim Kott",
   "license": "MIT",
   "main": "dist/index.js",
