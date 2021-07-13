@@ -29,7 +29,7 @@
     "lint": "tsc --noEmit",
     "format": "prettier --write .",
     "build": "rm -rf dist && tsc --noEmit && tsup src/index.ts --clean --dts --sourcemap --format esm,cjs --legacy-output",
-    "release": "np --no-release-draft --tag next",
+    "release": "np --no-release-draft",
     "preview": "np --no-release-draft --tag dev",
     "version": "yarn run build"
   },
