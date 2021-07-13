@@ -1,5 +1,5 @@
 import { createAccessor } from "./createAccessor"
-import { get } from "lodash"
+import get from "lodash/get"
 
 const data = {
   property: "property value",

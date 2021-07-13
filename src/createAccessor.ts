@@ -1,5 +1,6 @@
 import { CreateAccessor, CreateNestedAccessor } from "./types"
-import { get, has } from "lodash"
+import get from "lodash/get"
+import has from "lodash/has"
 
 export const createAccessor: CreateAccessor = (source, handler) =>
   createNestedAccessor(source, undefined, handler)
