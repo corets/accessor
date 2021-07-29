@@ -22,7 +22,7 @@
     "/dist"
   ],
   "repository": "github:corets/accessor",
-  "homepage": "https://corets.github.io/accessor",
+  "homepage": "https://docs.corets.io/services/accessor",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
